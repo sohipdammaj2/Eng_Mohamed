@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المهندس صهيب دماج | حلول تقنية متكاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #34495e;
+            --accent-color: #e67e22;
+            --text-color: #ffffff;
+            --bg-light: #f8f9fa;
+            --bg-dark: #2c3e50;
+            --whatsapp-color: #25d366;
+            --card-hover: rgba(255,255,255,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--secondary-color);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #27ae60;
+            --secondary-color: #bdc3c7;
+            --bg-light: #2c3e50;
+            --bg-dark: #34495e;
+            --text-color: #ecf0f1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -10%;
+            width: 120%;
+            height: 60px;
+            background: var(--bg-light);
+            transform: rotate(-3deg);
+        }
+
+        .header h1 {
+            color: var(--text-color);
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 3rem 0;
+        }
+
+        .service-card {
+            background: var(--text-color);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--card-hover), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .service-card:hover::before {
+            animation: cardGlow 1.5s;
+        }
+
+        @keyframes cardGlow {
+            0% { transform: rotate(45deg) translate(-50%, -50%); }
+            100% { transform: rotate(45deg) translate(50%, 50%); }
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h2 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .service-card p {
+            color: #7f8c8d;
+            line-height: 1.8;
+            font-size: 1rem;
+            min-height: 100px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .contact-card {
+            background: var(--text-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .whatsapp-btn {
+            background: var(--whatsapp-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            color: var(--text-color);
+            border-radius: 20px 20px 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem 0;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+
+    <div class="header">
+        <h1>المهندس صهيب دماج</h1>
+        <p>حلول برمجية مبتكرة لتحويل الأفكار إلى واقع</p>
+    </div>
+
+    <div class="container">
+        <div class="services-grid">
+            <!-- الذكاء الاصطناعي -->
+            <div class="service-card" onclick="openWhatsApp('أنظمة الذكاء الاصطناعي')">
+                <i class="fas fa-brain service-icon"></i>
+                <h2>أنظمة الذكاء الاصطناعي</h2>
+                <p>تصميم نماذج تعلم آلي متقدمة - معالجة اللغات الطبيعية - رؤية حاسوبية</p>
+                <button class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الخدمة
+                </button>
+            </div>
+
+            <!-- تحليل البيانات -->
+            <div class="service-card" onclick="openWhatsApp('تحليل البيانات')">
+                <i class="fas fa-chart-line service-icon"></i>
+                <h2>تحليل البيانات</h2>
+                <p>تحليلات تنبؤية - تصور بيانات تفاعلي - معالجة البيانات الضخمة</p>
+                <button class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الخدمة
+                </button>
+            </div>
+
+            <!-- تطوير الويب -->
+            <div class="service-card" onclick="openWhatsApp('تطوير الويب')">
+                <i class="fas fa-code service-icon"></i>
+                <h2>تطوير الويب المتقدم</h2>
+                <p>تطبيقات ويب ديناميكية - واجهات مستخدم تفاعلية - أنظمة إدارة المحتوى</p>
+                <button class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الخدمة
+                </button>
+            </div>
+
+            <!-- قواعد البيانات -->
+            <div class="service-card" onclick="openWhatsApp('قواعد البيانات')">
+                <i class="fas fa-database service-icon"></i>
+                <h2>قواعد البيانات المتقدمة</h2>
+                <p>تصميم قواعد بيانات - تحسين الأداء - أنظمة NoSQL - أمن البيانات</p>
+                <button class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الخدمة
+                </button>
+            </div>
+
+            <!-- معالجات بايثون -->
+            <div class="service-card" onclick="openWhatsApp('حلول بايثون')">
+                <i class="fab fa-python service-icon"></i>
+                <h2>حلول بايثون متقدمة</h2>
+                <p>أتمتة المهام - تحليل البيانات - تطوير APIs - بناء سكربتات مخصصة</p>
+                <button class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الخدمة
+                </button>
+            </div>
+
+            <!-- الخوارزميات -->
+            <div class="service-card" onclick="openWhatsApp('تصميم الخوارزميات')">
+                <i class="fas fa-project-diagram service-icon"></i>
+                <h2>تصميم الخوارزميات</h2>
+                <p>حلول خوارزمية مبتكرة - تحسين الكفاءة - تحليل التعقيد الزمني</p>
+                <button class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    اطلب الخدمة
+                </button>
+            </div>
+        </div>
+
+        <!-- قسم التواصل -->
+        <div class="contact-grid">
+            <div class="contact-card" onclick="window.open('https://wa.me/+966123456789')">
+                <i class="fab fa-whatsapp contact-icon"></i>
+                <h3>واتساب</h3>
+                <p>+966 123 456 789</ p>
+            </div>
+
+            <div class="contact-card" onclick="window.open('mailto:sohip@example.com')">
+                <i class="fas fa-envelope contact-icon"></i>
+                <h3>البريد الإلكتروني</h3>
+                <p>sohip@example.com</p>
+            </div>
+
+            <div class="contact-card" onclick="window.open('https://linkedin.com/in/sohip')">
+                <i class="fab fa-linkedin contact-icon"></i>
+                <h3>لينكد إن</h3>
+                <p>linkedin.com/in/sohip</p>
+            </div>
+
+            <div class="contact-card" onclick="window.open('https://t.me/sohip_dammaj')">
+                <i class="fab fa-telegram contact-icon"></i>
+                <h3>تيليجرام</h3>
+                <p>@sohip_dammaj</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Ⓒ 2023 المهندس صهيب دماج | جميع الحقوق محفوظة</p>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            const toggle = document.querySelector(".theme-toggle");
+            toggle.innerHTML = newTheme === 'dark' ? '🌞' : '🌙';
+        }
+
+        function openWhatsApp(service) {
+            const phone = '+966123456789';
+            const message = `مرحبًا، أنا مهتم بخدمة ${service}`;
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.querySelector('.theme-toggle').innerHTML = savedTheme === 'dark' ? '🌞' : '🌙';
+        });
+    </script>
+</body>
+</html>
